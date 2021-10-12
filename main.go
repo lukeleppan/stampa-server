@@ -58,7 +58,7 @@ func sendFileToClient(connection net.Conn) {
 }
 
 func main() {
-	server, err := net.Listen("tcp", "localhost:27001")
+	server, err := net.Listen("tcp", ":27001")
 	if err != nil {
 		fmt.Println("Error listetning: ", err)
 		os.Exit(1)
