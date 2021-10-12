@@ -10,7 +10,6 @@ import (
 
 const BUFFERSIZE = 1024
 
-
 func fillString(retunString string, toLength int) string {
 	for {
 		lengtString := len(retunString)
@@ -26,7 +25,12 @@ func fillString(retunString string, toLength int) string {
 func sendFileToClient(connection net.Conn) {
 	fmt.Println("A client has connected!")
 	defer connection.Close()
-	file, err := os.Open("jacuzz.jpg")
+	folder, direrr := os.ReadDir("vault")
+	if direrr != nil {
+		fmt.Println(direrr)
+		return
+	}
+	file, err := os.Open("vault/" + folder[0].Name())
 	if err != nil {
 		fmt.Println(err)
 		return
